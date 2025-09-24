@@ -1,10 +1,12 @@
-﻿using MarketplacePlugin.Models.Login.OAuth2;
+﻿using MarketplacePlugin.Models.Login;
 
 namespace MarketplacePlugin.Interfaces.Login.OAuth2
 {
 
-    public interface IOAuth2Provider : ILoginProvider
+    public interface IOAuth2Provider : IMarketplaceAuth
     {
+        HttpClient HttpClient { get; }
+        OAuth2ProviderConfig Config { get; }
         string Name { get; }
 
         /// <summary>
@@ -15,12 +17,33 @@ namespace MarketplacePlugin.Interfaces.Login.OAuth2
         /// <summary>
         /// Exchange the authorization code for the first token set.
         /// </summary>
-        Task<OAuth2Token> ExchangeCodeAsync(string authorizationCode);
+        Task<AuthResult> ExchangeCodeAsync(string authorizationCode);
 
         /// <summary>
         /// Refresh the access token.
         /// </summary>
-        Task<OAuth2Token> RefreshTokenAsync(string refreshToken);
+        Task<AuthResult> RefreshTokenAsync();
+    }
+
+    // JWT
+    public interface IJwtAuth : IMarketplaceAuth
+    {
+        string ClientId { get; }
+        string ClientSecret { get; }
+    }
+
+    // Basic username/password
+    public interface IBasicAuth : IMarketplaceAuth
+    {
+        string Username { get; }
+        string Password { get; }
+    }
+
+    // API key in header
+    public interface IApiKeyHeaderAuth : IMarketplaceAuth
+    {
+        string ApiKeyName { get; }
+        string ApiKeyValue { get; }
     }
 
 }

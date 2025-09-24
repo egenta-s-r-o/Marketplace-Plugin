@@ -1,28 +1,30 @@
-﻿using MarketplacePlugin.Models;
+﻿using MarketplacePlugin.Interfaces.Login;
 
 namespace MarketplacePlugin.Interfaces.Integration
 {
-    /// <summary>
-    /// Defines methods for synchronizing products and offers with a marketplace.
-    /// </summary>
-    public interface IMarketplaceHandler
-    {
-        /// <summary>
-        /// Synchronizes a collection of products with the marketplace.
-        /// </summary>
-        /// <param name="products">The products to synchronize.</param>
-        /// <returns>
-        /// A <see cref="Result"/> indicating the success or failure of the operation.
-        /// </returns>
-        Task<Result> SyncProductsAsync(IEnumerable<Product> products);
+    public interface IMarketplaceHandler<TAuth, TProduct, TOffer>
 
-        /// <summary>
-        /// Synchronizes a collection of offers with the marketplace.
-        /// </summary>
-        /// <param name="offers">The offers to synchronize.</param>
-        /// <returns>
-        /// A <see cref="Result"/> indicating the success or failure of the operation.
-        /// </returns>
-        Task<Result> SyncOffersAsync(IEnumerable<Offer> offers);
+        where TAuth : IMarketplaceAuth
+        where TProduct : IProductIntegration
+        where TOffer : IOfferIntegration
+    {
+        string MarketplaceName { get; }
+
+        TAuth Auth { get; }
+    }
+
+    public abstract class Market : IMarketplaceHandler<IMarketplaceAuth, IProductIntegration, IOfferIntegration>
+    {
+        public abstract string MarketplaceName { get; }
+        public IMarketplaceAuth Auth { get; }
+        public IProductIntegration ProductIntegration { get; }
+        public IOfferIntegration OfferIntegration { get; }
+
+        public Market(IMarketplaceAuth auth, IProductIntegration productIntegration, IOfferIntegration offerIntegration)
+        {
+            Auth = auth ?? throw new ArgumentNullException(nameof(auth));
+            ProductIntegration = productIntegration ?? throw new ArgumentNullException(nameof(productIntegration));
+            OfferIntegration = offerIntegration ?? throw new ArgumentNullException(nameof(offerIntegration));
+        }
     }
 }

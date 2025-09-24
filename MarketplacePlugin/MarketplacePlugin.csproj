@@ -5,11 +5,11 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PackageId>MarketplacePlugin</PackageId>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
 <Authors>Zdenek Mrazek</Authors>
-  <Description>Marketplace OAuth2 plugin abstractions for eBay</Description>
+  <Description>Marketplace plugin operations abstraction</Description>
   <PackageReadmeFile>README.md</PackageReadmeFile>
-  <RepositoryUrl>https://github.com/ZdenekMrazek/Marketplace-Plugin-eBay</RepositoryUrl>
+  <RepositoryUrl>https://github.com/ZdenekMrazek/Marketplace-Plugin</RepositoryUrl>
   <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
