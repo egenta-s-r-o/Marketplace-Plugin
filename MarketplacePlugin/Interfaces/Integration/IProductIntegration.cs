@@ -1,4 +1,5 @@
 ﻿using MarketplacePlugin.Models;
+using MarketplacePlugin.Models.Exception;
 
 namespace MarketplacePlugin.Interfaces.Integration
 {
@@ -51,5 +52,26 @@ namespace MarketplacePlugin.Interfaces.Integration
         /// A <see cref="Result"/> indicating the outcome of the synchronization, including any relevant messages or attributes.
         /// </returns>
         Task<Result> SyncProducts(IEnumerable<Product> products);
+
+        /// <summary>
+        /// Occurs when an error happens during product creation in the marketplace.
+        /// </summary>
+        event EventHandler<IntegrationException> OnProductCreateError;
+        /// <summary>
+        /// Occurs when an error happens during reading product details from the marketplace.
+        /// </summary>
+        event EventHandler<IntegrationException> OnProductReadError;
+        /// <summary>
+        /// Occurs when an error happens during updating a product in the marketplace.
+        /// </summary>
+        event EventHandler<IntegrationException> OnProductUpdateError;
+        /// <summary>
+        /// Occurs when an error happens during deleting a product from the marketplace.
+        /// </summary>
+        event EventHandler<IntegrationException> OnProductDeleteError;
+        /// <summary>
+        /// Occurs when an error happens during synchronizing products with the marketplace.
+        /// </summary>
+        event EventHandler<IntegrationException> OnProductSyncError;
     }
 }

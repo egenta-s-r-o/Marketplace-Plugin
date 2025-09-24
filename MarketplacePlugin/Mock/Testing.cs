@@ -1,5 +1,6 @@
 ﻿using MarketplacePlugin.Interfaces.Integration;
 using MarketplacePlugin.Models;
+using MarketplacePlugin.Models.Exception;
 
 namespace MarketplacePlugin.Mock
 {
@@ -14,6 +15,12 @@ namespace MarketplacePlugin.Mock
 
             //handle create products
             IProductIntegration productIntegration = null; // Replace with actual implementation
+
+            //subscribe to events
+            productIntegration.OnProductCreateError += (s, e) =>
+            {
+            };
+
             EBayMarket eBayMarket = new EBayMarket(auth, productIntegration, null);
             foreach (var product in products)
             {
@@ -24,6 +31,13 @@ namespace MarketplacePlugin.Mock
 
     public class eBayProductIntegration : IProductIntegration
     {
+        public event EventHandler<IntegrationException> OnProductCreateError;
+
+        public event EventHandler<IntegrationException> OnProductReadError;
+        public event EventHandler<IntegrationException> OnProductUpdateError;
+        public event EventHandler<IntegrationException> OnProductDeleteError;
+        public event EventHandler<IntegrationException> OnProductSyncError;
+
         public Task<Result> Create(Product product)
         {
             // Implement create logic here

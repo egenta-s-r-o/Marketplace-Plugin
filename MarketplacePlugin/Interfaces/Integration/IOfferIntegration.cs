@@ -1,4 +1,5 @@
 ﻿using MarketplacePlugin.Models;
+using MarketplacePlugin.Models.Exception;
 
 namespace MarketplacePlugin.Interfaces.Integration
 {
@@ -15,6 +16,8 @@ namespace MarketplacePlugin.Interfaces.Integration
         /// A <see cref="Result"/> indicating whether the creation was successful, including any relevant messages or attributes.
         /// </returns>
         Task<Result> Create(Offer offer);
+
+        event EventHandler<Offer> OnOfferCreated;
 
         /// <summary>
         /// Reads offer details from the marketplace.
@@ -51,5 +54,27 @@ namespace MarketplacePlugin.Interfaces.Integration
         /// A <see cref="Result"/> indicating the outcome of the synchronization, including any relevant messages or attributes.
         /// </returns>
         Task<Result> SyncOffers(IEnumerable<Offer> offers);
+
+        /// <summary>
+        /// Occurs when an error happens during offer creation in the marketplace.
+        /// </summary>
+        event EventHandler<IntegrationException> OnOfferCreateError;
+        /// <summary>
+        /// Occurs when an error happens during offer reading from the marketplace.
+        /// </summary>
+        event EventHandler<IntegrationException> OnOfferReadError;
+        /// <summary>
+        /// Occurs when an error happens during offer update in the marketplace.
+        /// </summary>
+        event EventHandler<IntegrationException> OnOfferUpdateError;
+        /// <summary>
+        /// Occurs when an error happens during offer deletion from the marketplace.
+        /// </summary>
+        event EventHandler<IntegrationException> OnOfferDeleteError;
+        /// <summary>
+        /// Occurs when an error happens during offer synchronization with the marketplace.
+        /// </summary>
+        event EventHandler<IntegrationException> OnOfferSyncError;
+
     }
 }
