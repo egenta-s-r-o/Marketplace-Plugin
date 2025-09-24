@@ -12,6 +12,44 @@ MarketplacePlugin is a .NET 8 library designed to simplify integration with mark
 ## This repository use
 Use this repository to push your commits after implementation of MarketplacePlugin Package interfaces.
 
+### Interface implementation examples
+
+1. Market class
+```
+public class EBayMarket : Market
+{
+    public override string MarketplaceName => "eBay";
+    public EBayMarket(IMarketplaceAuth auth, IProductIntegration productIntegration, IOfferIntegration offerIntegration)
+        : base(auth, productIntegration, offerIntegration)
+    {
+    }
+}
+```
+
+2. Implement IMarketplaceAuth that is needed for specific marketplace, for example eBay => implement IOAuth2Provider
+3. Implement IProductIntegration
+4. Implement IOfferIntegration
+
+### Product creation use-case example
+```
+public async Task Test(List<Product> products)
+{
+    // Example usage:
+    HttpClient httpClient = new HttpClient();
+    EBayOAuth2Provider auth = new EBayOAuth2Provider(httpClient, new Interfaces.Login.OAuth2.OAuth2ProviderConfig(null, null, null, null, null, null, null, null));
+    var authResult = await auth.AuthenticateAsync();
+
+    //handle create products
+    IProductIntegration productIntegration = null; // Replace with actual implementation
+    EBayMarket eBayMarket = new EBayMarket(auth, productIntegration, null);
+    foreach (var product in products)
+    {
+        var createProductResult = await eBayMarket.ProductIntegration.Create(product);
+    }                      
+}
+```
+
+
 
 # Using the MarketplacePlugin NuGet Package
 
