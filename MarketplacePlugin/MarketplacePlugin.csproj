@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <PackageId>MarketplacePlugin</PackageId>
+    <Version>1.0.1</Version>
+<Authors>Zdenek Mrazek</Authors>
+  <Description>Marketplace OAuth2 plugin abstractions for eBay</Description>
+  <PackageReadmeFile>README.md</PackageReadmeFile>
+  <RepositoryUrl>https://github.com/ZdenekMrazek/Marketplace-Plugin-eBay</RepositoryUrl>
+  <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\Services\" />
+    <Folder Include="Services\NewFolder\" />
+    <None Include="README.md" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+</Project>

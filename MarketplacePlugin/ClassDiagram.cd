@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MarketplacePlugin.Models.Offer">
+    <Position X="1.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Offer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MarketplacePlugin.Models.Product">
+    <Position X="1.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Models\Product.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MarketplacePlugin.Models.Result">
+    <Position X="5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAgAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Models\Result.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="MarketplacePlugin.Interfaces.Integration.IMarketplaceHandler">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Interfaces\Integration\IMarketplaceHandler.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MarketplacePlugin.Interfaces.Integration.IOfferIntegration">
+    <Position X="7.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAgAAEAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\Integration\IOfferIntegration.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MarketplacePlugin.Interfaces.Integration.IProductIntegration">
+    <Position X="2" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAgAAEAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\Integration\IProductIntegration.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MarketplacePlugin.Interfaces.Login.ILoginProvider">
+    <Position X="5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\Login\ILoginProvider.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
