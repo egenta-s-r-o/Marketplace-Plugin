@@ -86,14 +86,14 @@ dotnet nuget add source "https://nuget.pkg.github.com/ZdenekMrazek/index.json" -
 
 ### Option A: Using CLI
 ```
-dotnet add package MarketplacePlugin --version 1.0.2
+dotnet add package MarketplacePlugin
 ```
 ### Option B: Editing .csproj
 Add this inside your .csproj file:
 
 ```
 <ItemGroup>
-  <PackageReference Include="MarketplacePlugin" Version="1.0.2" />
+  <PackageReference Include="MarketplacePlugin"/>
 </ItemGroup>
 ```
 
