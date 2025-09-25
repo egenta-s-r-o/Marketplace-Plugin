@@ -12,6 +12,8 @@ MarketplacePlugin is a .NET 8 library designed to simplify integration with mark
 ## This repository use
 Use this repository to push your commits after implementation of MarketplacePlugin Package interfaces.
 
+![Marketplace Class Diagram](/MarketplacePlugin/ClassDiagram.png)
+
 ### Interface implementation examples
 
 1. Market class
