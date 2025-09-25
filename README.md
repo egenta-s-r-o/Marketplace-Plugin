@@ -112,5 +112,3 @@ public class Test
     }
 }
 ```
-
-@2024 Copyright Zdenek Mrazek
