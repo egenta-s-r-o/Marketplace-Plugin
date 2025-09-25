@@ -1,9 +1,10 @@
 ﻿namespace MarketplacePlugin.Models
 {
+
     /// <summary>
     /// Represents a product in the marketplace.
     /// </summary>
-    public class Product
+    public class Product : IntegrationItem
     {
         /// <summary>
         /// Gets or sets the European Article Number (EAN) of the product.

@@ -3,7 +3,7 @@
     /// <summary>
     /// Represents the base result of an operation, including success status, message, and additional attributes.
     /// </summary>
-    public abstract class Result
+    public class IntegrationResult
     {
         /// <summary>
         /// Gets or sets a value indicating whether the operation was successful.
@@ -17,7 +17,13 @@
 
         /// <summary>
         /// Gets or sets a collection of additional attributes related to the result.
+        /// The key is the attribute name, and the value is the attribute value.
         /// </summary>
         public Dictionary<string, object?> Attributes { get; set; } = new();
+
+        /// <summary>
+        /// Gets or sets the integration items associated with the result, if any.
+        /// </summary>
+        public IEnumerable<IntegrationItem>? IntegrationItems { get; set; }
     }
 }

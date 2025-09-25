@@ -14,10 +14,10 @@ namespace MarketplacePlugin.Mock
             var authResult = await auth.AuthenticateAsync();
 
             //handle create products
-            IProductIntegration productIntegration = null; // Replace with actual implementation
+            IIntegration productIntegration = null; // Replace with actual implementation
 
             //subscribe to events
-            productIntegration.OnProductCreateError += (s, e) =>
+            productIntegration.OnIntegrationItemCreated += (s, e) =>
             {
             };
 
@@ -29,38 +29,37 @@ namespace MarketplacePlugin.Mock
         }
     }
 
-    public class eBayProductIntegration : IProductIntegration
+    public class eBayProductIntegration : IIntegration
     {
-        public event EventHandler<IntegrationException> OnProductCreateError;
+        public event EventHandler<IntegrationItem> OnIntegrationItemCreated;
+        public event EventHandler<IntegrationException> OnIntegrationItemCreateError;
+        public event EventHandler<IntegrationException> OnIntegrationItemDeleteError;
+        public event EventHandler<IntegrationException> OnIntegrationItemReadError;
+        public event EventHandler<IntegrationException> OnIntegrationItemSyncError;
+        public event EventHandler<IntegrationException> OnIntegrationItemUpdateError;
 
-        public event EventHandler<IntegrationException> OnProductReadError;
-        public event EventHandler<IntegrationException> OnProductUpdateError;
-        public event EventHandler<IntegrationException> OnProductDeleteError;
-        public event EventHandler<IntegrationException> OnProductSyncError;
+        public Task<IntegrationResult> Create(IntegrationItem IntegrationItem)
+        {
+            throw new NotImplementedException();
+        }
 
-        public Task<Result> Create(Product product)
+        public Task<IntegrationResult> Delete(IntegrationItem IntegrationItem)
         {
-            // Implement create logic here
             throw new NotImplementedException();
         }
-        public Task<Result> Delete(Product product)
+
+        public Task<IntegrationResult> Read(IntegrationItem IntegrationItem)
         {
-            // Implement delete logic here
             throw new NotImplementedException();
         }
-        public Task<Result> Read(Product product)
+
+        public Task<IntegrationResult> SyncIntegrationItems(IEnumerable<IntegrationItem> IntegrationItems, bool IsStockUpdate)
         {
-            // Implement read logic here
             throw new NotImplementedException();
         }
-        public Task<Result> SyncProducts(IEnumerable<Product> products)
+
+        public Task<IntegrationResult> Update(IntegrationItem IntegrationItem)
         {
-            // Implement sync logic here
-            throw new NotImplementedException();
-        }
-        public Task<Result> Update(Product product)
-        {
-            // Implement update logic here
             throw new NotImplementedException();
         }
     }

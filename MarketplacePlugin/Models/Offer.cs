@@ -14,5 +14,10 @@
         /// Gets or sets the available stock for the offer.
         /// </summary>
         public int Stock { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this update is only for stock changes.
+        /// </summary>
+        public bool IsOnlyStockupdate { get; set; }
     }
 }

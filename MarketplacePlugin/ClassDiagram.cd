@@ -1,45 +1,112 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="MarketplacePlugin.Models.Offer">
-    <Position X="6.75" Y="4" Width="1.5" />
+  <Class Name="MarketplacePlugin.Models.Exception.IntegrationException">
+    <Position X="3.25" Y="9.25" Width="2" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAFAAAAAAAAAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Exception\IntegrationException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MarketplacePlugin.Models.Login.OAuth2.OAuth2Token">
+    <Position X="3.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAAAAEAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Login\OAuth2\OAuth2Token.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MarketplacePlugin.Models.Login.AuthResult">
+    <Position X="3.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAQAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Models\Login\AuthResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MarketplacePlugin.Models.IntegrationItem" Collapsed="true">
+    <Position X="5.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\IntegrationItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MarketplacePlugin.Models.Offer">
+    <Position X="7.5" Y="7.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAABAAAAAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Offer.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MarketplacePlugin.Models.Product">
-    <Position X="3.75" Y="4" Width="1.5" />
+    <Position X="5.5" Y="7.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAEAAAAAA=</HashCode>
       <FileName>Models\Product.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MarketplacePlugin.Models.Result">
-    <Position X="5.25" Y="6" Width="1.5" />
+  <Class Name="MarketplacePlugin.Models.IntegrationResult">
+    <Position X="5.5" Y="9.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAgAAAAAAAAAAIAAAAAA=</HashCode>
-      <FileName>Models\Result.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAQAgAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Models\IntegrationResult.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Interface Name="MarketplacePlugin.Interfaces.Integration.IOfferIntegration">
-    <Position X="8.5" Y="4" Width="1.5" />
+  <Class Name="MarketplacePlugin.Interfaces.Market">
+    <Position X="10.25" Y="5" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAgAAEAQEAAAAAAAAAAAAA=</HashCode>
-      <FileName>Interfaces\Integration\IOfferIntegration.cs</FileName>
+      <HashCode>AAAAAAAABAAABAAAAAAAAAAAAAAABAAAAAAAABAAAAA=</HashCode>
+      <FileName>Interfaces\Market.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="MarketplacePlugin.Interfaces.Integration.IIntegration">
+    <Position X="3.25" Y="5.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAARAAAAAAAIAAAgAAAgAAFAAMAAABAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\Integration\IIntegration.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="MarketplacePlugin.Interfaces.Integration.IProductIntegration">
-    <Position X="2" Y="4" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAQAAAAAAAgAAAAAAAAAAAAgAAEAAEAAAAAAAAAAAAA=</HashCode>
-      <FileName>Interfaces\Integration\IProductIntegration.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="MarketplacePlugin.Interfaces.Login.OAuth2.IOAuth2Provider" Collapsed="true">
-    <Position X="7.75" Y="1.25" Width="1.5" />
+  <Interface Name="MarketplacePlugin.Interfaces.Login.OAuth2.IOAuth2Provider">
+    <Position X="5.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAwAAAAAgAQAAAAQACAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Interfaces\Login\OAuth2\IOAuth2Provider.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MarketplacePlugin.Interfaces.Login.OAuth2.IJwtAuth">
+    <Position X="7.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\Login\OAuth2\IOAuth2Provider.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MarketplacePlugin.Interfaces.Login.OAuth2.IBasicAuth">
+    <Position X="10" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\Login\OAuth2\IOAuth2Provider.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MarketplacePlugin.Interfaces.Login.OAuth2.IApiKeyHeaderAuth">
+    <Position X="12.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\Login\OAuth2\IOAuth2Provider.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MarketplacePlugin.Interfaces.Login.IMarketplaceAuth">
+    <Position X="8.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Interfaces\Login\IMarketplaceAuth.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MarketplacePlugin.Interfaces.IMarketplaceHandler&lt;TAuth, TProduct, TOffer&gt;">
+    <Position X="8.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAABAAAAA=</HashCode>
+      <FileName>Interfaces\IMarketplaceHandler.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Font Name="Segoe UI" Size="9" />
