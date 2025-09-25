@@ -19,7 +19,7 @@ Use this repository to push your commits after implementation of MarketplacePlug
 public class EBayMarket : Market
 {
     public override string MarketplaceName => "eBay";
-    public EBayMarket(IMarketplaceAuth auth, IProductIntegration productIntegration, IOfferIntegration offerIntegration)
+    public EBayMarket(IMarketplaceAuth auth, IIntegration productIntegration, IIntegration offerIntegration)
         : base(auth, productIntegration, offerIntegration)
     {
     }
@@ -27,8 +27,8 @@ public class EBayMarket : Market
 ```
 
 2. Implement IMarketplaceAuth that is needed for specific marketplace, for example eBay => implement IOAuth2Provider
-3. Implement IProductIntegration
-4. Implement IOfferIntegration
+3. Implement IIntegration for products
+4. Implement IIntegration for offers
 
 ### Product creation use-case example
 ```
@@ -40,12 +40,18 @@ public async Task Test(List<Product> products)
     var authResult = await auth.AuthenticateAsync();
 
     //handle create products
-    IProductIntegration productIntegration = null; // Replace with actual implementation
+    IIntegration productIntegration = new ProductIntegration(); // Replace with actual implementation of IIntegration for products
+
+    //subscribe to events
+    productIntegration.OnIntegrationItemCreated += (s, e) =>
+    {
+    };
+
     EBayMarket eBayMarket = new EBayMarket(auth, productIntegration, null);
     foreach (var product in products)
     {
         var createProductResult = await eBayMarket.ProductIntegration.Create(product);
-    }                      
+    }
 }
 ```
 
