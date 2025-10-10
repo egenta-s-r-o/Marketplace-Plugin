@@ -16,7 +16,7 @@ namespace MarketplacePlugin.MockImplementation.Products
             _marketplaceAPIService = marketplaceAPIService;
         }
 
-        public string Name => throw new NotImplementedException();
+        public string Name => "eBay get product by ean";
 
         /// <summary>
         /// Executes the strategy asynchronously to retrieve a product from eBay by EAN.
@@ -28,7 +28,6 @@ namespace MarketplacePlugin.MockImplementation.Products
         /// </returns>
         public async Task<IntegrationResult<Product>> ExecuteAsync(string ean, CancellationToken cancellationToken = default)
         {
-            // Mock implementation: In a real scenario, you would call eBay's API to get the product by ID.
             var product = await _marketplaceAPIService.GetProductByIdAsync(ean, cancellationToken);
             return new IntegrationResult<Product> { Success = true, IntegrationItems = new List<Product> { product } };
         }

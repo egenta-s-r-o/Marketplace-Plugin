@@ -29,31 +29,98 @@ public class EBayMarket : Market
 ```
 
 2. Implement IMarketplaceAuth that is needed for specific marketplace, for example eBay => implement IOAuth2Provider
-3. Implement IIntegration for products
-4. Implement IIntegration for offers
-
-### Product creation use-case example
+3. Implement all needed IMarketplaceStrategy
 ```
-public async Task Test(List<Product> products)
+//example implementation for retrieving product from eBay
+    
+/// <summary>
+/// Strategy for retrieving an eBay product by its EAN.
+/// </summary>
+public class EBayGetProductByEANStrategy : IGetItemStrategy<Product, string>
 {
-    // Example usage:
+    private readonly EBayAPIService _marketplaceAPIService;
+    public EBayGetProductByEANStrategy(EBayAPIService marketplaceAPIService)
+    {
+        _marketplaceAPIService = marketplaceAPIService;
+    }
+
+    public string Name => "eBay get product by ean";
+
+    /// <summary>
+    /// Executes the strategy asynchronously to retrieve a product from eBay by EAN.
+    /// </summary>
+    /// <param name="ean">The European Article Number (EAN) of the product.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    /// <returns>
+    /// A task that represents the asynchronous operation. The task result contains the retrieved <see cref="IntegrationItem"/>.
+    /// </returns>
+    public async Task<IntegrationResult<Product>> ExecuteAsync(string ean, CancellationToken cancellationToken = default)
+    {
+        var product = await _marketplaceAPIService.GetProductByIdAsync(ean, cancellationToken);
+        return new IntegrationResult<Product> { Success = true, IntegrationItems = new List<Product> { product } };
+    }
+}
+```
+
+### Use-case example
+```
+public async Task Test()
+{
     HttpClient httpClient = new HttpClient();
     EBayOAuth2Provider auth = new EBayOAuth2Provider(httpClient, new Interfaces.Login.OAuth2.OAuth2ProviderConfig(null, null, null, null, null, null, null, null));
     var authResult = await auth.AuthenticateAsync();
 
-    //handle create products
-    IIntegration productIntegration = new ProductIntegration(); // Replace with actual implementation of IIntegration for products
+    //initialize market
+    EBayMarket eBayMarket = new EBayMarket(auth);
+    EBayAPIService marketplaceAPIService = new EBayAPIService(); //create service for calling marketplace API
 
-    //subscribe to events
-    productIntegration.OnIntegrationItemCreated += (s, e) =>
+    //for simplicity, we create strategies here. In a real-world scenario, consider using a DI container.
+    IMarketplaceStrategy<Product, string> getItemStrategy = new EBayGetProductByEANStrategy(marketplaceAPIService);
+    IMarketplaceStrategy<Product, Product> updateStrategy = new EBayUpdateProductStrategy(marketplaceAPIService);
+    IMarketplaceStrategy<Product, List<Product>> syncStrategy = new EBaySyncProductsStrategy(marketplaceAPIService);
+    IMarketplaceStrategy<Customer, string> getCustomerStrategy = new EBayGetCustomerByIdStrategy(marketplaceAPIService);
+    IMarketplaceStrategy<Order, string> getOrderStrategy = new EBayGetOrderByIdStrategy(marketplaceAPIService);
+
+    //get order example
+    string orderID = "exampleOrderID";
+    var integrationResultOrder = await eBayMarket.ExecuteAsync(getOrderStrategy, orderID);
+    var order = integrationResultOrder.IntegrationItems?.FirstOrDefault();
+    //handle order as needed
+    if (order != null)
     {
-    };
+        // Process the order
+    }
 
-    EBayMarket eBayMarket = new EBayMarket(auth, productIntegration, null);
+    //handling products
+    List<Product> products = new List<Product>
+    {
+        new Product { EAN = "1234567890123", SKU = "SKU001" },
+        new Product { EAN = "2345678901234", SKU = "SKU002" }
+    };
     foreach (var product in products)
     {
-        var createProductResult = await eBayMarket.ProductIntegration.Create(product);
+        var integrationResult = await eBayMarket.ExecuteAsync(getItemStrategy, product.EAN);
+        var existingItem = integrationResult.IntegrationItems?.FirstOrDefault();
+        if (!string.IsNullOrEmpty(existingItem?.SKU))
+        {
+            //item exists, update it                                        
+            var updateProductResult = await eBayMarket.ExecuteAsync(updateStrategy, product);
+            if (!updateProductResult.Success)
+            {
+                //handle error
+                var message = updateProductResult.Message;
+            }
+        }
     }
+
+    //synchronize products
+    await eBayMarket.ExecuteAsync(syncStrategy, products);
+
+
+    //handling customers            
+    string customerID = "exampleCustomerID";
+    var integrationResultCustomer = await eBayMarket.ExecuteAsync(getCustomerStrategy, customerID);
+    var customer = integrationResultCustomer.IntegrationItems?.FirstOrDefault();
 }
 ```
 

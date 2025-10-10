@@ -152,7 +152,7 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="MarketplacePlugin.Interfaces.Strategy.IMarketplaceStrategy&lt;TResult, TEntity&gt;" Collapsed="true">
-    <Position X="12.5" Y="8.5" Width="1.5" />
+    <Position X="11.25" Y="8.5" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAEA=</HashCode>
       <FileName>Interfaces\Strategy\IMarketplaceStrategy.cs</FileName>
