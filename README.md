@@ -29,7 +29,7 @@ public class EBayMarket : Market
 ```
 
 2. Implement IMarketplaceAuth that is needed for specific marketplace, for example eBay => implement IOAuth2Provider
-3. Implement all needed IMarketplaceStrategy
+3. Create all needed IMarketplaceStrategy implementations (create products, handle customers, handle offers, etc.)
 ```
 //example implementation for retrieving product from eBay
     
@@ -147,7 +147,7 @@ This guide explains how to install and use the `MarketplacePlugin` package hoste
 
 Run the following command in your terminal (PowerShell or CMD):
 ```
-dotnet nuget add source "https://nuget.pkg.github.com/ZdenekMrazek/index.json" --username YOUR_GITHUB_USERNAME --password YOUR_PAT --store-password-in-clear-text --name github
+dotnet nuget add source "https://nuget.pkg.github.com/egenta-s-r-o/index.json" --username YOUR_GITHUB_USERNAME --password YOUR_PAT --store-password-in-clear-text --name github
 ```
 ## 3. Install the NuGet package
 
