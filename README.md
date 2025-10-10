@@ -19,13 +19,12 @@ Use this repository to push your commits after implementation of MarketplacePlug
 1. Market class
 ```
 public class EBayMarket : Market
-{
-    public override string MarketplaceName => "eBay";
-    public EBayMarket(IMarketplaceAuth auth, IIntegration productIntegration, IIntegration offerIntegration)
-        : base(auth, productIntegration, offerIntegration)
     {
+        public EBayMarket(IMarketplaceAuth auth) : base(auth)
+        {
+        }
+        public override string MarketplaceName => "eBay";
     }
-}
 ```
 
 2. Implement IMarketplaceAuth that is needed for specific marketplace, for example eBay => implement IOAuth2Provider
