@@ -3,7 +3,7 @@
     /// <summary>
     /// Represents the base result of an operation, including success status, message, and additional attributes.
     /// </summary>
-    public class IntegrationResult
+    public class IntegrationResult<TItem> where TItem : IntegrationItem
     {
         /// <summary>
         /// Gets or sets a value indicating whether the operation was successful.
@@ -24,6 +24,6 @@
         /// <summary>
         /// Gets or sets the integration items associated with the result, if any.
         /// </summary>
-        public IEnumerable<IntegrationItem>? IntegrationItems { get; set; }
+        public IEnumerable<TItem>? IntegrationItems { get; set; }
     }
 }

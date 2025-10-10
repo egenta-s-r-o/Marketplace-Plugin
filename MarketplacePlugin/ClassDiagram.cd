@@ -45,7 +45,7 @@
       <FileName>Models\Product.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MarketplacePlugin.Models.IntegrationResult">
+  <Class Name="MarketplacePlugin.Models.IntegrationResult&lt;TItem&gt;">
     <Position X="5.5" Y="9.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAgAAQAgAAAAAAAAAAIAAAAAA=</HashCode>
@@ -55,18 +55,32 @@
   <Class Name="MarketplacePlugin.Interfaces.Market">
     <Position X="10.25" Y="5" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAABAAABAAAAAAAAAAAAAAABAAAAAAAABAAAAA=</HashCode>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAABAAAEA=</HashCode>
       <FileName>Interfaces\Market.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Interface Name="MarketplacePlugin.Interfaces.Integration.IIntegration">
-    <Position X="3.25" Y="5.75" Width="2" />
+  <Class Name="MarketplacePlugin.Interfaces.MarketplaceContext">
+    <Position X="13" Y="6.25" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAQAAAARAAAAAAAIAAAgAAAgAAFAAMAAABAAAAAAAAA=</HashCode>
-      <FileName>Interfaces\Integration\IIntegration.cs</FileName>
+      <HashCode>AAAAEAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Interfaces\MarketplaceContext.cs</FileName>
     </TypeIdentifier>
-  </Interface>
+  </Class>
+  <Class Name="MarketplacePlugin.Models.Customer">
+    <Position X="3.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Customer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MarketplacePlugin.Models.Order">
+    <Position X="3.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Order.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Interface Name="MarketplacePlugin.Interfaces.Login.OAuth2.IOAuth2Provider">
     <Position X="5.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
@@ -78,21 +92,21 @@
     <Position X="7.75" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Interfaces\Login\OAuth2\IOAuth2Provider.cs</FileName>
+      <FileName>Interfaces\Login\OAuth2\IJwtAuth.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="MarketplacePlugin.Interfaces.Login.OAuth2.IBasicAuth">
     <Position X="10" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
-      <FileName>Interfaces\Login\OAuth2\IOAuth2Provider.cs</FileName>
+      <FileName>Interfaces\Login\OAuth2\IBasicAuth.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="MarketplacePlugin.Interfaces.Login.OAuth2.IApiKeyHeaderAuth">
     <Position X="12.25" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAEAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Interfaces\Login\OAuth2\IOAuth2Provider.cs</FileName>
+      <FileName>Interfaces\Login\OAuth2\IApiKeyHeaderAuth.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="MarketplacePlugin.Interfaces.Login.IMarketplaceAuth">
@@ -102,11 +116,67 @@
       <FileName>Interfaces\Login\IMarketplaceAuth.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="MarketplacePlugin.Interfaces.IMarketplaceHandler&lt;TAuth, TProduct, TOffer&gt;">
+  <Interface Name="MarketplacePlugin.Interfaces.IMarketplaceHandler&lt;TAuth&gt;">
     <Position X="8.5" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAABAAAAA=</HashCode>
       <FileName>Interfaces\IMarketplaceHandler.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MarketplacePlugin.Interfaces.Strategy.ICreateItemStrategy&lt;TResult, TEntity&gt;" Collapsed="true">
+    <Position X="10" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\Strategy\ICreateItemStrategy.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MarketplacePlugin.Interfaces.Strategy.IDeleteItemStrategy&lt;TResult, TEntity&gt;" Collapsed="true">
+    <Position X="10" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\Strategy\IDeleteItemStrategy.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MarketplacePlugin.Interfaces.Strategy.IGetAllItemsStrategy&lt;TResult, TEntity&gt;" Collapsed="true">
+    <Position X="8" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\Strategy\IGetAllItemsStrategy.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MarketplacePlugin.Interfaces.Strategy.IGetItemStrategy&lt;TResult, TEntity&gt;" Collapsed="true">
+    <Position X="8" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\Strategy\IGetItemStrategy.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MarketplacePlugin.Interfaces.Strategy.IMarketplaceStrategy&lt;TResult, TEntity&gt;" Collapsed="true">
+    <Position X="12.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Interfaces\Strategy\IMarketplaceStrategy.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MarketplacePlugin.Interfaces.Strategy.ISearchItemStrategy&lt;TResult, TEntity&gt;" Collapsed="true">
+    <Position X="12" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\Strategy\ISearchItemStrategy.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MarketplacePlugin.Interfaces.Strategy.ISyncItemsStrategy&lt;TResult, TEntity&gt;" Collapsed="true">
+    <Position X="13.75" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\Strategy\ISyncItemsStrategy.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MarketplacePlugin.Interfaces.Strategy.IUpdateItemStrategy&lt;TResult, TEntity&gt;" Collapsed="true">
+    <Position X="12" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\Strategy\IUpdateItemStrategy.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Font Name="Segoe UI" Size="9" />

@@ -1,16 +1,24 @@
-﻿using MarketplacePlugin.Interfaces.Integration;
-using MarketplacePlugin.Interfaces.Login;
+﻿using MarketplacePlugin.Interfaces.Login;
 
 namespace MarketplacePlugin.Interfaces
 {
-    public interface IMarketplaceHandler<TAuth, TProduct, TOffer>
-
+    /// <summary>
+    /// Defines a handler for a specific marketplace, providing access to authentication and marketplace identification.
+    /// </summary>
+    /// <typeparam name="TAuth">
+    /// The type of authentication used for the marketplace, which must implement <see cref="IMarketplaceAuth"/>.
+    /// </typeparam>
+    public interface IMarketplaceHandler<TAuth>
         where TAuth : IMarketplaceAuth
-        where TProduct : IIntegration
-        where TOffer : IIntegration
     {
+        /// <summary>
+        /// Gets the name of the marketplace.
+        /// </summary>
         string MarketplaceName { get; }
 
+        /// <summary>
+        /// Gets the authentication object for the marketplace.
+        /// </summary>
         TAuth Auth { get; }
     }
 }

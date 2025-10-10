@@ -25,25 +25,4 @@ namespace MarketplacePlugin.Interfaces.Login.OAuth2
         Task<AuthResult> RefreshTokenAsync();
     }
 
-    // JWT
-    public interface IJwtAuth : IMarketplaceAuth
-    {
-        string ClientId { get; }
-        string ClientSecret { get; }
-    }
-
-    // Basic username/password
-    public interface IBasicAuth : IMarketplaceAuth
-    {
-        string Username { get; }
-        string Password { get; }
-    }
-
-    // API key in header
-    public interface IApiKeyHeaderAuth : IMarketplaceAuth
-    {
-        string ApiKeyName { get; }
-        string ApiKeyValue { get; }
-    }
-
 }

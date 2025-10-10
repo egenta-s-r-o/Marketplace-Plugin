@@ -1,7 +1,7 @@
 ﻿using MarketplacePlugin.Interfaces.Login.OAuth2;
 using MarketplacePlugin.Models.Login;
 
-namespace MarketplacePlugin.Mock
+namespace MarketplacePlugin.MockImplementation.Login
 {
     public class EBayOAuth2Provider : IOAuth2Provider
     {

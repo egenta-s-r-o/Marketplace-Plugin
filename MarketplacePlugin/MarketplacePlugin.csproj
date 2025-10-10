@@ -15,13 +15,12 @@
 
   <ItemGroup>
     <None Include="..\README.md" Pack="true" PackagePath="\" />
+    <Compile Remove="Models\Services\**" />
     <Compile Remove="Services\**" />
+    <EmbeddedResource Remove="Models\Services\**" />
     <EmbeddedResource Remove="Services\**" />
+    <None Remove="Models\Services\**" />
     <None Remove="Services\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Models\Services\" />
   </ItemGroup>
 
 </Project>
