@@ -120,6 +120,10 @@ public async Task Test()
     string customerID = "exampleCustomerID";
     var integrationResultCustomer = await eBayMarket.ExecuteAsync(getCustomerStrategy, customerID);
     var customer = integrationResultCustomer.IntegrationItems?.FirstOrDefault();
+
+    //example of OrderManagement
+    EbayOrderManagement orderManagement = new EbayOrderManagement(new HttpClient());
+    await orderManagement.ImportOrdersAsync(new OrderImportRequest());
 }
 ```
 
