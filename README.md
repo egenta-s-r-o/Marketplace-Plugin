@@ -17,7 +17,7 @@ Use this repository to push your commits after implementation of MarketplacePlug
 ### Interface implementation examples
 
 1. Market class
-```
+```c#
 public class EBayMarket : Market
     {
         public EBayMarket(IMarketplaceAuth auth) : base(auth)
