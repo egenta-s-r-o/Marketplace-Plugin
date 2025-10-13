@@ -1,10 +1,13 @@
-﻿using MarketplacePlugin.Interfaces.Strategy;
+﻿using MarketplacePlugin.Infrastructure;
+using MarketplacePlugin.Interfaces.Strategy;
 using MarketplacePlugin.MockImplementation.Customers;
 using MarketplacePlugin.MockImplementation.Login;
+using MarketplacePlugin.MockImplementation.OrderManagement;
 using MarketplacePlugin.MockImplementation.Orders;
 using MarketplacePlugin.MockImplementation.Products;
 using MarketplacePlugin.MockImplementation.Services;
 using MarketplacePlugin.Models;
+using MarketplacePlugin.Models.OrderManagementAPI;
 
 namespace MarketplacePlugin.MockImplementation
 {
@@ -68,6 +71,10 @@ namespace MarketplacePlugin.MockImplementation
             string customerID = "exampleCustomerID";
             var integrationResultCustomer = await eBayMarket.ExecuteAsync(getCustomerStrategy, customerID);
             var customer = integrationResultCustomer.IntegrationItems?.FirstOrDefault();
+
+            //example of OrderManagement
+            EbayOrderManagement orderManagement = new EbayOrderManagement(new HttpClient());
+            await orderManagement.ImportOrdersAsync(new OrderImportRequest());
         }
     }
 }
