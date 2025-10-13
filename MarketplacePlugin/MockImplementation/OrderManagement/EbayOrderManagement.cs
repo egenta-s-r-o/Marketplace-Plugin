@@ -1,5 +1,4 @@
 ﻿using MarketplacePlugin.Infrastructure;
-using MarketplacePlugin.Interfaces;
 using MarketplacePlugin.Models.OrderManagementAPI;
 
 namespace MarketplacePlugin.MockImplementation.OrderManagement
@@ -10,7 +9,7 @@ namespace MarketplacePlugin.MockImplementation.OrderManagement
         {
         }
 
-        public async Task ImportOrdersAsync(string secretId, string secretKey, List<Order> orders)
+        public async Task ImportOrdersAsync(string secretId, string secretKey, List<OrderManagementOrder> orders)
         {
             var request = new OrderImportRequest
             {
