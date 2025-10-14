@@ -17,19 +17,19 @@ Use this repository to push your commits after implementation of MarketplacePlug
 ### Interface implementation examples
 
 1. Market class
-```
+```c#
 public class EBayMarket : Market
+{
+    public EBayMarket(IMarketplaceAuth auth) : base(auth)
     {
-        public EBayMarket(IMarketplaceAuth auth) : base(auth)
-        {
-        }
-        public override string MarketplaceName => "eBay";
     }
+    public override string MarketplaceName => "eBay";
+}
 ```
 
 2. Implement IMarketplaceAuth that is needed for specific marketplace, for example eBay => implement IOAuth2Provider
 3. Create all needed IMarketplaceStrategy implementations (create products, handle customers, handle offers, etc.)
-```
+```c#
 //example implementation for retrieving product from eBay
     
 /// <summary>
@@ -62,7 +62,7 @@ public class EBayGetProductByEANStrategy : IGetItemStrategy<Product, string>
 ```
 
 ### Use-case example
-```
+```c#
 public async Task Test()
 {
     HttpClient httpClient = new HttpClient();
@@ -120,6 +120,10 @@ public async Task Test()
     string customerID = "exampleCustomerID";
     var integrationResultCustomer = await eBayMarket.ExecuteAsync(getCustomerStrategy, customerID);
     var customer = integrationResultCustomer.IntegrationItems?.FirstOrDefault();
+
+    //example of OrderManagement
+    EbayOrderManagement orderManagement = new EbayOrderManagement(new HttpClient());
+    await orderManagement.ImportOrdersAsync(new OrderImportRequest());
 }
 ```
 
@@ -167,7 +171,7 @@ Add this inside your .csproj file:
 
 Build your project. The MarketplacePlugin assembly should now be available in your code:
 
-```
+```c#
 using MarketplacePlugin;
 
 public class Test
