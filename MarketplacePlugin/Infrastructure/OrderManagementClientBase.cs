@@ -27,10 +27,26 @@ namespace MarketplacePlugin.Infrastructure
         /// <summary>
         /// Get list of shipped orders from OMS
         /// </summary>
-        public async Task<HttpResponseMessage> GetShippedOrdersAsync(string secretId, string secretKey)
+        public async Task<(HttpResponseMessage, ShippedOrderResponse?)> GetShippedOrdersAsync(string secretId, string secretKey)
         {
             var uri = $"https://oms.egenta.eu/api/order_update_get_list.php?secret_id={secretId}&secret_key={secretKey}";
-            return await _client.GetAsync(uri);
+            var response = await _client.GetAsync(uri);
+            if(response.IsSuccessStatusCode)
+            {
+                var data = await response.Content.ReadFromJsonAsync<ShippedOrderResponse>();
+                if(data is not null)
+                {
+                    return (response, data);
+                }
+                else
+                {
+                    return (response, null); //Data cannot be deserialized
+                }
+            }
+            else
+            {
+                return (response, null); //Request failed
+            }
         }
 
         /// <summary>
@@ -44,10 +60,26 @@ namespace MarketplacePlugin.Infrastructure
         /// <summary>
         /// Get list of orders to check status
         /// </summary>
-        public async Task<HttpResponseMessage> GetOrdersToCheckStatusAsync(string secretId, string secretKey)
+        public async Task<(HttpResponseMessage, OrdersToCheckResponse?)> GetOrdersToCheckStatusAsync(string secretId, string secretKey)
         {
             var uri = $"https://oms.egenta.eu/api/order_status_get_list.php?secret_id={secretId}&secret_key={secretKey}";
-            return await _client.GetAsync(uri);
+            var response = await _client.GetAsync(uri);
+            if (response.IsSuccessStatusCode)
+            {
+                var data = await response.Content.ReadFromJsonAsync<OrdersToCheckResponse>();
+                if (data is not null)
+                {
+                    return (response, data);
+                }
+                else
+                {
+                    return (response, null); //Data cannot be deserialized
+                }
+            }
+            else
+            {
+                return (response, null); //Request failed
+            }
         }
 
         /// <summary>
