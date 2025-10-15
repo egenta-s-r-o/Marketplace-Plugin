@@ -9,7 +9,5 @@ namespace MarketplacePlugin.MockImplementation
         {
         }
         public override string MarketplaceName => "eBay";
-
-
     }
 }

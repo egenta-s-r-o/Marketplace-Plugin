@@ -35,8 +35,11 @@ namespace MarketplacePlugin.Models.OrderManagementAPI
         [JsonPropertyName("OrderID")]
         public string OrderId { get; set; }
 
+        /// <summary>
+        /// Status can be only 1 and is set by default. DO NOT CHANGE!
+        /// </summary>
         [JsonPropertyName("updated")]
-        public int Updated { get; set; } // 1 = shipped
+        public int Updated { get; set; } = 1;
     }
 
     /// <summary>
@@ -53,9 +56,55 @@ namespace MarketplacePlugin.Models.OrderManagementAPI
         [JsonPropertyName("OrderID")]
         public string OrderId { get; set; }
 
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         [JsonPropertyName("OrderStatusTranslated")]
-        public string OrderStatusTranslated { get; set; } // Shipped, Unshipped, Canceled
+        public OrderStatus OrderStatusTranslated { get; set; }
     }
+
+    /// <summary>
+    /// Order status enumeration for status updates
+    /// </summary>
+    public enum OrderStatus
+    {
+        Shipped,
+        Unshipped,
+        Canceled
+    }
+
+    #endregion
+    #region Order Responses
+    /// <summary>
+    /// Response wrapper for shipped orders list
+    /// </summary>
+    public class ShippedOrderResponse
+    {
+        [JsonPropertyName("orders")]
+        public List<ShippedOrder> Orders { get; set; }
+    }
+
+    /// <summary>
+    /// Response wrapper for orders to check status
+    /// </summary>
+    public class OrdersToCheckResponse
+    {
+        [JsonPropertyName("orders")]
+        public List<ShippedOrderId> Orders { get; set; }
+    }
+
+    public class ShippedOrderId
+    {
+        [JsonPropertyName("orderId")]
+        public string OrderId { get; set; }
+    }
+
+    public class ShippedOrder : ShippedOrderId
+    {
+        [JsonPropertyName("carrierName")]
+        public string CarrierName { get; set; }
+        [JsonPropertyName("parcelNumber")]
+        public string ParcelNumber { get; set; }
+    }
+
     #endregion
 
     #region Order Management Models
