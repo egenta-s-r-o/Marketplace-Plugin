@@ -124,6 +124,16 @@ public async Task Test()
     //example of OrderManagement
     EbayOrderManagement orderManagement = new EbayOrderManagement(new HttpClient());
     await orderManagement.ImportOrdersAsync(new OrderImportRequest());
+    
+    //example of OrderManagement
+    EbayOrderManagement orderManagement = new EbayOrderManagement(new HttpClient());
+    await orderManagement.UpdateOrderStatusAsync(new OrderStatusUpdateRequest()
+    {
+        OrderId = "exampleOrderID",
+        SecretId = "exampleSecretId",
+        SecretKey = "exampleSecretKey",
+        OrderStatusTranslated = OrderStatus.Unshipped
+    });
 }
 ```
 
