@@ -5,8 +5,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PackageId>MarketplacePlugin</PackageId>
-    <Version>2.1.0</Version>
-<Authors>Zdenek Mrazek</Authors>
+    <Version>2.1.1</Version>
+<Authors>egenta</Authors>
   <Description>Marketplace plugin operations abstraction</Description>
   <PackageReadmeFile>README.md</PackageReadmeFile>
   <RepositoryUrl>https://github.com/ZdenekMrazek/Marketplace-Plugin</RepositoryUrl>
