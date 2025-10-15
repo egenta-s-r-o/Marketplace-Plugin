@@ -51,10 +51,10 @@ namespace MarketplacePlugin.MockImplementation.Login
             {"client_secret", _config.ClientSecret}
         });
 
-            var response = await _httpClient.PostAsync(_config.TokenEndpoint, body);
+            var response = await _httpClient.PostAsync(_config.TokenEndpoint, body).ConfigureAwait(false);
             response.EnsureSuccessStatusCode();
 
-            var json = await response.Content.ReadAsStringAsync();
+            var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             return ParseTokenResponse(json);
         }
 
@@ -78,10 +78,10 @@ namespace MarketplacePlugin.MockImplementation.Login
             {"client_secret", _config.ClientSecret}
         });
 
-            var response = await _httpClient.PostAsync(_config.RefreshTokenEndpoint, body);
+            var response = await _httpClient.PostAsync(_config.RefreshTokenEndpoint, body).ConfigureAwait(false);
             response.EnsureSuccessStatusCode();
 
-            var json = await response.Content.ReadAsStringAsync();
+            var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             return ParseTokenResponse(json);
         }
     }

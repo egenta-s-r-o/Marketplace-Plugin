@@ -15,7 +15,7 @@ namespace MarketplacePlugin.MockImplementation.Customers
 
         public async Task<IntegrationResult<Customer>> ExecuteAsync(string customerId, CancellationToken cancellationToken = default)
         {
-            var customer = await _marketplaceAPIService.GetCustomerByIdAsync(customerId, cancellationToken);
+            var customer = await _marketplaceAPIService.GetCustomerByIdAsync(customerId, cancellationToken).ConfigureAwait(false);
             return new IntegrationResult<Customer> { Success = true, IntegrationItems = new List<Customer> { customer } };
         }
     }

@@ -15,7 +15,7 @@ namespace MarketplacePlugin.MockImplementation.Orders
 
         public async Task<IntegrationResult<Order>> ExecuteAsync(string entity, CancellationToken cancellationToken = default)
         {
-            var order = await _marketplaceAPIService.GetOrderByIdAsync(entity, cancellationToken);
+            var order = await _marketplaceAPIService.GetOrderByIdAsync(entity, cancellationToken).ConfigureAwait(false);
             return new IntegrationResult<Order> { Success = true, IntegrationItems = new List<Order> { order } };
         }
     }

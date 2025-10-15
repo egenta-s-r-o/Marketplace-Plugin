@@ -28,7 +28,7 @@ namespace MarketplacePlugin.MockImplementation.Products
         /// </returns>
         public async Task<IntegrationResult<Product>> ExecuteAsync(string ean, CancellationToken cancellationToken = default)
         {
-            var product = await _marketplaceAPIService.GetProductByIdAsync(ean, cancellationToken);
+            var product = await _marketplaceAPIService.GetProductByIdAsync(ean, cancellationToken).ConfigureAwait(false);
             return new IntegrationResult<Product> { Success = true, IntegrationItems = new List<Product> { product } };
         }
     }

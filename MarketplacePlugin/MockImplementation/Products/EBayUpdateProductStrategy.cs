@@ -16,7 +16,7 @@ namespace MarketplacePlugin.MockImplementation.Products
 
         public async Task<IntegrationResult<Product>> ExecuteAsync(Product item, CancellationToken cancellationToken = default)
         {
-            await _marketplaceAPIService.UpdateProductAsync(item, cancellationToken);
+            await _marketplaceAPIService.UpdateProductAsync(item, cancellationToken).ConfigureAwait(false);
             return new IntegrationResult<Product> { Success = true, IntegrationItems = new List<Product> { item } };
         }
     }
