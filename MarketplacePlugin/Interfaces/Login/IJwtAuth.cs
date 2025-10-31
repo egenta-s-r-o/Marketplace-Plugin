@@ -1,4 +1,4 @@
-﻿namespace MarketplacePlugin.Interfaces.Login.OAuth2
+﻿namespace MarketplacePlugin.Interfaces.Login
 {
     // JWT
     public interface IJwtAuth : IMarketplaceAuth

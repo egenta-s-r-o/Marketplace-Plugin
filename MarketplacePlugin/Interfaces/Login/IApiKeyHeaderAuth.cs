@@ -1,4 +1,4 @@
-﻿namespace MarketplacePlugin.Interfaces.Login.OAuth2
+﻿namespace MarketplacePlugin.Interfaces.Login
 {
     // API key in header
     public interface IApiKeyHeaderAuth : IMarketplaceAuth

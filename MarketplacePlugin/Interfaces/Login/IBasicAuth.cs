@@ -1,4 +1,4 @@
-﻿namespace MarketplacePlugin.Interfaces.Login.OAuth2
+﻿namespace MarketplacePlugin.Interfaces.Login
 {
     // Basic username/password
     public interface IBasicAuth : IMarketplaceAuth
